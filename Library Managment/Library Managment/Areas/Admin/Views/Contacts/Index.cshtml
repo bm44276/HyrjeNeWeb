@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Library_Managment.Models.Contact>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <h1>Index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subject)
+                </th>
+                <th>
+                    Manage
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.ContactId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ContactId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
