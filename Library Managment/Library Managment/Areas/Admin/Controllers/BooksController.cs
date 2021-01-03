@@ -65,7 +65,7 @@ namespace Library_Managment.Areas.Admin.Controllers
             int pageSize = 8;
             return View(await PaginatedList<Book>.CreateAsync(books.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
-
+        //
         // GET: Admin/Books/Details/5
         public async Task<IActionResult> Details(int? id)
         {
