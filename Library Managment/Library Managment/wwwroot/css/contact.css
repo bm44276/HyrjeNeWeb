@@ -1,0 +1,32 @@
+
+
+.form-border {
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0.6px 0.6px 0.5px 0.5px #53A8BA;
+    margin-bottom: 5px;
+    width: 500px;
+    transition: 2s;
+    cursor: pointer;
+}
+
+.form-border:hover {
+        background-color: #dbdbdb;
+        transition: 2s;
+        padding-bottom: 90px;
+        box-shadow: -0.6px -0.6px 0.5px 0.5px #53A8BA;
+        color: white;
+        font-size: 16px;
+}
+input, textarea {
+    color: black;
+    font-size: 12px;
+}
+
+.contact-blocks {
+    border: 1px solid #00768E;
+    background-color: #00768E;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+

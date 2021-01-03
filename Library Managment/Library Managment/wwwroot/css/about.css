@@ -1,0 +1,91 @@
+.div-space{
+    margin-right: 15px;
+    margin-left: 15px;
+    border-radius: 30px;
+    text-align: center;
+}
+.div-back-color {
+    background-image: linear-gradient(to right top, #168cd8, #009bdf, #00a9e5, #00b7e9, #12c5eb);
+}
+.text-padd{
+    padding: 10px;
+}
+.div-for-space{
+    margin-top: 100px;
+}
+
+.top-image{
+    width: 50%;
+    margin: 0 auto;
+    transition: 2s;
+    cursor: pointer;
+    display: block;
+}
+
+.top-image:hover{
+    transition: 2s;
+    width: 55%;
+}
+
+.img-book {
+    background-color: #2B335B;
+    padding: 13px 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 20px;
+}
+
+.all-div {
+    background-color: #f2f2f2;
+}
+
+.b-div {
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 2s;
+    background-image: linear-gradient(to right top, #168cd8, #009bdf, #00a9e5, #00b7e9, #12c5eb);
+    color:white;
+}
+
+ .b-div:hover {
+        font-size: 24px;
+        border-radius: 60px;
+        cursor: pointer;
+        transition: 2s;
+ }
+
+
+.j-div {
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 2s;
+    background-image: linear-gradient(to right top, #168cd8, #009bdf, #00a9e5, #00b7e9, #12c5eb);
+    color: white;
+}
+
+    .j-div:hover {
+        font-size:24px;
+        border-radius: 60px;
+        cursor: pointer;
+        transition: 2s;
+        background-color: #1d91f0;
+    }
+
+
+
+.m-div {
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 2s;
+    background-image: linear-gradient(to right top, #168cd8, #009bdf, #00a9e5, #00b7e9, #12c5eb);
+    color: white;
+}
+
+    .m-div:hover {
+        font-size: 24px;
+        border-radius: 60px;
+        cursor: pointer;
+        transition: 2s;
+        background-color: #1d91f0;
+    }

@@ -1,0 +1,40 @@
+﻿@model List<Library_Managment.Models.UserNewData>
+
+    <form asp-area="Admin" asp-controller="AdminHome" asp-action="SearchUser" method="post">
+        <div class="form-group">
+            <input type="text" name="search" class="form-control" style="width:500px; margin-bottom:5px;" />
+
+            <input type="submit" name="submit" value="Search" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @{ foreach (UserNewData user in Model) {
+                    <tr>
+                        <td>@user.Name</td>
+                        <td>@user.Surname</td>
+                        <td>@user.Email</td>
+                        <td>@user.UserName</td>
+                        <td>
+                            <a asp-area="Admin" asp-controller="AdminHome" asp-action="DeleteUser" asp-route-Id="@user.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+
+        </tbody>
+
+    </table>

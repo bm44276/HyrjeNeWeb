@@ -1,0 +1,40 @@
+﻿body {
+}
+
+.pic{
+    background-image: url(../Img/Library.jpg);
+    padding: 0;
+    color: white;
+    width: 100%;
+    background-repeat: no-repeat;
+}
+
+.par {
+    background-color: rgba(231, 230, 230, 0.9);
+    border-radius: 20px;
+    font-size: 26px;
+    padding: 8px;
+    height: 200px;
+    max-width: 600px;
+    margin-left: 100px;
+    margin-top: 200px;
+    color: black;
+    letter-spacing: 2px;
+}
+
+.parU{
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+.use-another-account {
+    background-color: #00768E;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    height: 367px;
+    letter-spacing: 3px;
+}
+
+.link-account{
+    color:white;
+    text-decoration: underline;
+}
