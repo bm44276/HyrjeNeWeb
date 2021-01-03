@@ -9194,11 +9194,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\IT SOLUTION\\Desktop\\HyrjeWEB\\Library Managment\\Library Managment\\Library Managment.csproj",
+      "projectUniqueName": "C:\\Users\\IT SOLUTION\\Desktop\\gittest\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
       "projectName": "Library Managment",
-      "projectPath": "C:\\Users\\IT SOLUTION\\Desktop\\HyrjeWEB\\Library Managment\\Library Managment\\Library Managment.csproj",
+      "projectPath": "C:\\Users\\IT SOLUTION\\Desktop\\gittest\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
       "packagesPath": "C:\\Users\\IT SOLUTION\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\IT SOLUTION\\Desktop\\HyrjeWEB\\Library Managment\\Library Managment\\obj\\",
+      "outputPath": "C:\\Users\\IT SOLUTION\\Desktop\\gittest\\HyrjeNeWeb\\Library Managment\\Library Managment\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
