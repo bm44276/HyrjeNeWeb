@@ -17,8 +17,8 @@ namespace Library_Managment.Controllers {
         }
 
         public void Index() {
-            Response.Redirect("Identity/Account/Login");
-            ///Response.Redirect("User");
+            //Response.Redirect("Identity/Account/Login");
+            Response.Redirect("User");
 
         }
 
