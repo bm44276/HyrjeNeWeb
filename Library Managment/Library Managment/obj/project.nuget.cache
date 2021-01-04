@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Wnc/PYKr4hXwdDAwIsyulqOXogp+bsaVMaY8wbtfvmFuSS1HjaFZbTlIK7fxbEhmz1i79JZBEoAQCFWWYgcEnw==",
+  "dgSpecHash": "gQ2hwlVyTwxafEq1ZVQKk3LSX8bC5z0/5tnRWEDMDNId+H//q09QCsVdt2tMIqWvoetkOJisLFv459dRG6JV6w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jon\\Desktop\\Lms\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
+  "projectFilePath": "C:\\Users\\Jon\\Desktop\\LMS\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jon\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.10\\microsoft.aspnetcore.cryptography.internal.3.1.10.nupkg.sha512",
     "C:\\Users\\Jon\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.10\\microsoft.aspnetcore.cryptography.keyderivation.3.1.10.nupkg.sha512",
