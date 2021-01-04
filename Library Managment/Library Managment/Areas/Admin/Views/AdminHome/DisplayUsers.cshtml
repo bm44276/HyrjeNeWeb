@@ -2,8 +2,12 @@
 @using Microsoft.AspNetCore.Identity;
 @model PaginatedList<Library_Managment.Models.UserNewData>
 @inject UserManager<UserNewData> _userManager;
-
+@{
+    ViewData["Title"] = "Manage Users";
+}
 <div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <br />
     <form asp-action="DisplayUsers" method="get">
         <div class="form-inline ">
             <p>
@@ -13,7 +17,7 @@
             </p>
         </div>
     </form>
-
+    <br />
     <table class="table">
         <thead>
             <tr>

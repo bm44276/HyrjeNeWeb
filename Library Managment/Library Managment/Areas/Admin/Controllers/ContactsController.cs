@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Library_Managment.Data;
 using Library_Managment.Models;
 using Microsoft.AspNetCore.Authorization;
+using Library_Managment.Areas.Admin.Models;
 
 namespace Library_Managment.Areas.Admin.Controllers
 {
@@ -23,9 +24,13 @@ namespace Library_Managment.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contacts
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? pageNumber)
         {
-            return View(await _context.Contacts.ToListAsync());
+            var contacts = from c in _context.Contacts
+                        select c;
+ 
+            int pageSize = 10;
+            return View(await PaginatedList<Contact>.CreateAsync(contacts.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Admin/Contacts/Details/5

@@ -118,32 +118,5 @@ namespace Library_Managment.Areas.Admin.Controllers {
 
         }
 
-        /*
-         IDBSet inherits from IQueryable<TEntity>, IEnumerable<TEntity>, IQueryable, and IEnumerable, so you can't directly cast it to a list that way. You could get a List<TEntity> of all entities in the DBSet though by using .ToList() or .ToListAsync()
-
-THis creates a copy of all entities in memory though, so you should consider operating with LINQ directly on the DBSet
-        https://stackoverflow.com/questions/30845579/how-to-cast-dbsett-to-listt
-
-        https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio
-
-
-        https://docs.microsoft.com/en-us/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-5.0&tabs=visual-studio
-
-
-        https://stackoverflow.com/questions/32512169/change-layout-based-on-type-of-user-role
-You just need to modify the /Views/_ViewStart.cshtml file.
-
-@{
-    if (this.User.IsInRole("Admin") || !this.User.Identity.IsAuthenticated) {
-        Layout = "~/Views/Shared/_Layout.cshtml"; 
-    } else {
-        Layout = "~/Views/Shared/_LayoutUser.cshtml";
-    }
-}
-
-
-
-
-         */
     }
 }

@@ -1,1 +1,22 @@
-﻿<h1>Welcome admin</h1>
+﻿@{ 
+    ViewData["Title"] = "Admin Panel";
+}
+
+<h1 class="pt-5 pb-5 text-center">@ViewData["Title"]</h1>
+<br />
+<div class="row justify-content-around">
+    <div class="col-md-5 pt-2 pb-2">
+        <img src="~/Img/ic_border_color_24px.png" alt="admin panel"/>
+    </div>
+    <div class="col-md-5 pt-2 pb-2">
+        <h3>Welcome to Admin Panel!</h3>
+        <br />
+        <h5 class="p-5">
+            This Area will give you controll on how to handle the Lms page.<br />
+            Here in Admin Panel you will be able to manage User, Books and Contacts of the web page. <br />
+            You will be able to create, update and delete Users, contacts And Books.
+            <br />
+            - Creators Of The Page
+        </h5>
+    </div>
+</div>
