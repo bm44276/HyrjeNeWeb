@@ -9188,19 +9188,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jon\\.nuget\\packages\\": {}
+    "C:\\Users\\IT SOLUTION\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jon\\Desktop\\New folder\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
+      "projectUniqueName": "C:\\Users\\IT SOLUTION\\Desktop\\gitCrazy\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
       "projectName": "Library Managment",
-      "projectPath": "C:\\Users\\Jon\\Desktop\\New folder\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
-      "packagesPath": "C:\\Users\\Jon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jon\\Desktop\\New folder\\HyrjeNeWeb\\Library Managment\\Library Managment\\obj\\",
+      "projectPath": "C:\\Users\\IT SOLUTION\\Desktop\\gitCrazy\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
+      "packagesPath": "C:\\Users\\IT SOLUTION\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\IT SOLUTION\\Desktop\\gitCrazy\\HyrjeNeWeb\\Library Managment\\Library Managment\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Jon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\IT SOLUTION\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

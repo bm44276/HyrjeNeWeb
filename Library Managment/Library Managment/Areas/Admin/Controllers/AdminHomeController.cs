@@ -80,6 +80,44 @@ namespace Library_Managment.Areas.Admin.Controllers {
 
             return RedirectToAction(nameof(DisplayUsers));
         }
+
+
+        public async Task<IActionResult> ChangeRoles(string Role, string userId) {
+
+
+            if (Role == "Admin") {
+                try {
+
+                    var role = _userManager.FindByIdAsync(userId);
+
+                    var user = await _userManager.FindByIdAsync(userId);
+
+                    await _userManager.RemoveFromRoleAsync(user, "User");
+                    await _userManager.AddToRoleAsync(user, "Administrator");
+                } catch (Exception e) {
+
+                    throw e;
+                }
+
+            } else if (Role == "User") {
+                try {
+
+                    var role = _userManager.FindByIdAsync(userId);
+
+                    var user = await _userManager.FindByIdAsync(userId);
+
+                    await _userManager.RemoveFromRoleAsync(user, "Administrator");
+                    await _userManager.AddToRoleAsync(user, "User");
+                } catch (Exception e) {
+
+                    throw e;
+                }
+            }
+
+            return RedirectToAction(nameof(DisplayUsers));
+
+        }
+
         /*
          IDBSet inherits from IQueryable<TEntity>, IEnumerable<TEntity>, IQueryable, and IEnumerable, so you can't directly cast it to a list that way. You could get a List<TEntity> of all entities in the DBSet though by using .ToList() or .ToListAsync()
 

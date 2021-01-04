@@ -1,5 +1,8 @@
 ﻿@using Library_Managment.Areas.Admin.Models;
+@using Microsoft.AspNetCore.Identity;
 @model PaginatedList<Library_Managment.Models.UserNewData>
+@inject UserManager<UserNewData> _userManager;
+
 <div class="container">
     <form asp-action="DisplayUsers" method="get">
         <div class="form-inline ">
@@ -16,26 +19,41 @@
             <tr>
                 <th>Name</th>
                 <th>Surname</th>
-                <th>Email</th>
-                <th>Username</th>
+                <th>Email/Username</th>
                 <th>Delete</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var user in Model) {
-                <tr>
-                    <td>@user.Name</td>
+            <tr>
+                <td>@user.Name</td>
 
-                    <td>@user.Surname</td>
+                <td>@user.Surname</td>
 
-                    <td>@user.Email</td>
+                <td>@user.Email</td>
 
-                    <td>@user.UserName</td>
+                @{
 
-                    <td>
-                        <a asp-area="Admin" asp-controller="AdminHome" asp-action="DeleteUser" asp-route-Id="@user.Id" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
+                    var roles = await _userManager.GetRolesAsync(user);
+                    var displayRoleName = "";
+                    var role = "";
+
+                    if (roles[0] == "Admin") {
+                        displayRoleName = "Make User";
+                        role = "User";
+                    } else if (roles[0] == "User") {
+                        displayRoleName = "Make Admin";
+                        role = "Admin";
+                    }
+                }
+                <td>
+                    <a asp-area="Admin" asp-controller="AdminHome" asp-action="ChangeRoles" asp-route-Role="@role" asp-route-userId="@user.Id" class="btn btn-light">@displayRoleName</a>
+                </td>
+
+                <td>
+                    <a asp-area="Admin" asp-controller="AdminHome" asp-action="DeleteUser" asp-route-Id="@user.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
             }
         </tbody>
 
