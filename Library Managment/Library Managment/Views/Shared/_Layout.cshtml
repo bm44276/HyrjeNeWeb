@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity;
 @inject SignInManager<UserNewData> SignInManager
 @inject UserManager<UserNewData> UserManager
 
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="~/css/Register.css">
 </head>
 <body>
-    <header >
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+    <header class="pic">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand text-white">Library_Managment</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -26,23 +26,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
 
                     <ul class="navbar-nav flex-grow-1">
-                        @if (SignInManager.IsSignedIn(User)) {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-                            </li>
-                            <li class="nav-item">
-                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                    <button type="submit" class="nav-link btn btn-link">Logout</button>
-                                </form>
-                            </li>
-                        } else {
-                            <li class="nav-item">
-                                <a class="nav-link " asp-area="Identity" asp-page="/Account/Register">Register</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
-                            </li>
-                        }
+
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
@@ -63,7 +53,7 @@
 
     <footer class="border-top footer text-muted p-3">
         <div class="container">
-            &copy; 2020 - Library_Managment 
+            &copy; 2020 - Library_Managment
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

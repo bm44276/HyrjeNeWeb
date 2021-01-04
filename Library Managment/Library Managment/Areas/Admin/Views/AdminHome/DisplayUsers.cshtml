@@ -1,10 +1,13 @@
-﻿@model List<Library_Managment.Models.UserNewData>
-
-    <form asp-area="Admin" asp-controller="AdminHome" asp-action="SearchUser" method="post">
-        <div class="form-group">
-            <input type="text" name="search" class="form-control" style="width:500px; margin-bottom:5px;" />
-
-            <input type="submit" name="submit" value="Search" class="btn btn-primary" />
+﻿@using Library_Managment.Areas.Admin.Models;
+@model PaginatedList<Library_Managment.Models.UserNewData>
+<div class="container">
+    <form asp-action="DisplayUsers" method="get">
+        <div class="form-inline ">
+            <p>
+                <input type="text" name="SearchString" class="form-control" style="max-width:400px;" value="@ViewData["CurrentFilter"]" placeholder="Find Book" />
+                <input type="submit" value="Search" class="btn btn-success" /> -
+                <a class="btn btn-primary" asp-action="DisplayUsers">Back to Full List</a>
+            </p>
         </div>
     </form>
 
@@ -19,22 +22,41 @@
             </tr>
         </thead>
         <tbody>
+            @foreach (var user in Model) {
+                <tr>
+                    <td>@user.Name</td>
 
+                    <td>@user.Surname</td>
 
-            @{ foreach (UserNewData user in Model) {
-                    <tr>
-                        <td>@user.Name</td>
-                        <td>@user.Surname</td>
-                        <td>@user.Email</td>
-                        <td>@user.UserName</td>
-                        <td>
-                            <a asp-area="Admin" asp-controller="AdminHome" asp-action="DeleteUser" asp-route-Id="@user.Id" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                }
+                    <td>@user.Email</td>
+
+                    <td>@user.UserName</td>
+
+                    <td>
+                        <a asp-area="Admin" asp-controller="AdminHome" asp-action="DeleteUser" asp-route-Id="@user.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
             }
-
-
         </tbody>
 
     </table>
+</div>
+<div class="container">
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="DisplayUsers" asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-primary @prevDisabled">
+        Previous
+    </a>
+
+    <a asp-action="DisplayUsers" asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-primary @nextDisabled">
+        Next
+    </a>
+
+</div>

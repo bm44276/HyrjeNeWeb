@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Library_Managment.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Library_Managment.Areas.Admin.Models;
 
 namespace Library_Managment.Areas.Admin.Controllers {
 
@@ -33,18 +34,49 @@ namespace Library_Managment.Areas.Admin.Controllers {
             return View("DisplayUsers", users);
         }
 
-        public async Task<IActionResult> DisplayUsers() {
+        public async Task<IActionResult> DisplayUsers(string sortOrder, string currentFilter, string searchString, int? pageNumber) {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
 
-          List<UserNewData>users = _context.Users.ToList<UserNewData>();
+            if (searchString != null) {
+                pageNumber = 1;
+            } else {
+                searchString = currentFilter;
+            }
 
-            return View(users);
+            ViewData["CurrentFilter"] = searchString;
+
+            var users = from s in _context.Users
+                        select s;
+            if (!String.IsNullOrEmpty(searchString)) {
+                users = users.Where(s => s.Name.Contains(searchString)
+                                       || s.Surname.Contains(searchString) || s.Email.Contains(searchString) || s.UserName.Contains(searchString));
+            }
+            switch (sortOrder) {
+                case "name_desc":
+                    users = users.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                    users = users.OrderBy(s => s.Surname);
+                    break;
+                case "date_desc":
+                    users = users.OrderByDescending(s => s.Email);
+                    break;
+                default:
+                    users = users.OrderBy(s => s.UserName);
+                    break;
+            }
+
+            int pageSize = 10;
+            return View(await PaginatedList<UserNewData>.CreateAsync(users.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
       
 
         public async Task<IActionResult> DeleteUser(string Id) {
             var user = _context.Users.First(m => m.Id == Id);
             _context.Users.Remove(user);
-            _context.SaveChangesAsync();
+           await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(DisplayUsers));
         }

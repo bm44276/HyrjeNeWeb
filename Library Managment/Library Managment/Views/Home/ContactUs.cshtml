@@ -1,41 +1,42 @@
-﻿@{ 
+﻿@model Library_Managment.Models.Contact
+@{
     ViewData["Title"] = "Contact Us";
 }
 
 <div class="container">
 
     <h1 class="mbr-text text-center mbr-light pb-3 mbr-fonts-style display-2">Contact</h1>
-    <p class="lead text-info text-center">You can find us here and contact us for any problems you may have</p>    
+    <p class="lead text-info text-center">You can find us here and contact us for any problems you may have</p>
     <hr />
     <br />
-    <div class="row justify-content-between contact-blocks pt-5 pb-5 pr-3 pl-3 text-white" >
+    <div class="row justify-content-between contact-blocks pt-5 pb-5 pr-3 pl-3 text-white">
         <div class="col-md-10">
             <h2 class="pb-3">Library Management System - LMS</h2>
             <br />
-                <div class="row justify-content-center">
-                    <div class="col-md">
-                        <h5>Location: Ferizaj</h5>
-                        <h5>Bibloteka Ferizaj</h5>
-                    </div>
-                    <div class="col-md">
-                        <div class="row justify-content-center">
-                            <div class="col-md-2">
-                                <img src="~/Img/ic_call_24px.png" alt="phone" />
-                            </div>
-                            <div class="col-md-2">
-                                <p>044111333</p>
-                            </div>
+            <div class="row justify-content-center">
+                <div class="col-md">
+                    <h5>Location: Ferizaj</h5>
+                    <h5>Bibloteka Ferizaj</h5>
+                </div>
+                <div class="col-md">
+                    <div class="row justify-content-center">
+                        <div class="col-md-2">
+                            <img src="~/Img/ic_call_24px.png" alt="phone" />
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="col-md-2">
-                                <img src="~/Img/ic_mail_outline_24px.png" />
-                            </div>
-                            <div class="col-md-2">
-                                <p>LmsFerizaj@gmail.com</p>
-                            </div>
+                        <div class="col-md-2">
+                            <p>044111333</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-2">
+                            <img src="~/Img/ic_mail_outline_24px.png" />
+                        </div>
+                        <div class="col-md-2">
+                            <p>LmsFerizaj@gmail.com</p>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
         <div class="col-md-2">
             <img width="100px" src="~/Img/ic_room_24px.png" alt="Place" />
@@ -43,43 +44,44 @@
     </div>
     <br>
     <br>
-        <div class="row">
-            <div class="col-md">
-                <div class="embed-responsive embed-responsive-16by9" style="  margin-bottom: 10px;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d394.15372467790564!2d21.151366287373833!3d42.36942858205055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13547e570912bb65%3A0x3ab46c71666352e6!2sBiblioteka%20e%20Qytetit!5e0!3m2!1sen!2s!4v1607782987673!5m2!1sen!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                </div>
-            </div>
-
-            <div class="col-md">
-
-                <form class="form-border">
-
-                    <div class="form-group">
-                        <label for="exampleInputName">Full name</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Full name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputName">Subject</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Subject">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-
-                    <div class="form-check">
-
-                        <label class="form-check-label" for="exampleCheck1">Message</label>
-                        <textarea name="" id="" rows="10" class="form-control"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="margin-top: 5px;">Submit</button>
-                </form>
-
+    <div class="row">
+        <div class="col-md">
+            <div class="embed-responsive embed-responsive-16by9" style="  margin-bottom: 10px;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d394.15372467790564!2d21.151366287373833!3d42.36942858205055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13547e570912bb65%3A0x3ab46c71666352e6!2sBiblioteka%20e%20Qytetit!5e0!3m2!1sen!2s!4v1607782987673!5m2!1sen!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
         </div>
+
+        <div class="col-md">
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Subject" class="control-label"></label>
+                    <input asp-for="Subject" class="form-control" />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message" class="control-label"></label>
+                    <textarea asp-for="Message" row="10" class="form-control"> </textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+
+        </div>
+    </div>
     <br />
     <br />
 </div>

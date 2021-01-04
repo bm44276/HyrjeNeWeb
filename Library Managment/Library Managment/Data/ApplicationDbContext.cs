@@ -11,5 +11,6 @@ namespace Library_Managment.Data {
             : base(options) {
         }
         public DbSet<Book> Books { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }
