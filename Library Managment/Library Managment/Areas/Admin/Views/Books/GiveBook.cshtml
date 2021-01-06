@@ -1,0 +1,57 @@
+﻿@using Library_Managment.Areas.Admin.Models;
+@using Microsoft.AspNetCore.Identity;
+@model PaginatedList<Library_Managment.Models.UserNewData>
+@inject UserManager<UserNewData> _userManager;
+@{
+    ViewData["Title"] = "Give Book";
+}
+<style>
+    ul li {
+        list-style: none;
+        margin-bottom: 2px;
+    }
+</style>
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <br />
+    <form asp-controller="Books" asp-action="GiveBook" method="get">
+        <div class="form-inline ">
+            <p>
+                <input type="text" name="SearchString" class="form-control" style="max-width:400px;" value="@ViewData["CurrentFilter"]" placeholder="Give book to user" />
+                <input type="submit" value="Search" class="btn btn-success" /> -
+                <a class="btn btn-primary" asp-controller="Books" asp-action="GiveBook">Back to Full List</a>
+            </p>
+        </div>
+    </form>
+    <br />
+
+    <ul>
+        @foreach (var user in Model) {
+            <li> <a asp-area="Admin" asp-controller="Books" asp-action="GiveBookToUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId" class="btn btn-light">@user.Name @user.Surname,  @user.Email</a></li>
+        }
+
+    </ul>
+
+
+
+
+</div>
+<div class="container">
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="DisplayUsers" asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-primary @prevDisabled">
+        Previous
+    </a>
+
+    <a asp-action="DisplayUsers" asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-primary @nextDisabled">
+        Next
+    </a>
+
+</div>

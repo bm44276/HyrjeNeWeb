@@ -9,6 +9,7 @@ namespace Library_Managment.Models {
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Occupation { get; set; }
+        public ICollection<TakenBooks> TakenBooks { get; set; }
 
     }
 }

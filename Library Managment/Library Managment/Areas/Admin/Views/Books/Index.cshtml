@@ -48,9 +48,16 @@
         </div>
         <div class="col-md-3">
             <h3>Manage Book</h3>
-                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            @{
+                if (item.Available != 0) {
+                    <a class="btn btn-info" asp-action="GiveBook" asp-route-id="@item.Id">Give Book</a>
+                } else {
+                    <label class="btn btn-info">Give Book</label>
+                }
+            }
         </div>
     </div>
     }

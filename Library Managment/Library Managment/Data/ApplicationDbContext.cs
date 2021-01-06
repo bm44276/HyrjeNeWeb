@@ -12,5 +12,10 @@ namespace Library_Managment.Data {
         }
         public DbSet<Book> Books { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<TakenBooks> TakenBooks { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder) {
+            base.OnModelCreating(builder);
+        }
     }
 }

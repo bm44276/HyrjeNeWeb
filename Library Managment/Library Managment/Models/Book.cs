@@ -15,5 +15,6 @@ namespace Library_Managment.Models {
         public string Image { get; set; }
         public int Amount { get; set; }
         public int Available { get; set; }
+        public ICollection<TakenBooks> TakenBooks { get; set; }
     }
 }

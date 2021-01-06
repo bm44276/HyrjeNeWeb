@@ -209,5 +209,60 @@ namespace Library_Managment.Areas.Admin.Controllers
         {
             return _context.Books.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> GiveBook(string sortOrder, string currentFilter, string searchString, int? pageNumber, int id) {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null) {
+                pageNumber = 1;
+            } else {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var users = from s in _context.Users
+                        select s;
+            if (!String.IsNullOrEmpty(searchString)) {
+                users = users.Where(s => s.Name.Contains(searchString)
+                                       || s.Surname.Contains(searchString) || s.Email.Contains(searchString) || s.UserName.Contains(searchString));
+            }
+            switch (sortOrder) {
+                case "name_desc":
+                    users = users.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                    users = users.OrderBy(s => s.Surname);
+                    break;
+                case "date_desc":
+                    users = users.OrderByDescending(s => s.Email);
+                    break;
+                default:
+                    users = users.OrderBy(s => s.UserName);
+                    break;
+            }
+            ViewBag.BookId = id;
+            int pageSize = 10;
+            return View(await PaginatedList<UserNewData>.CreateAsync(users.AsNoTracking(), pageNumber ?? 1, pageSize));
+        }
+
+
+        public async Task<IActionResult> GiveBookToUser(string UserId, int BookId) {
+            DateTime localDate = DateTime.Now;
+            
+
+            TakenBooks take = new TakenBooks();
+            take.UserId = UserId;
+            take.BookId = BookId;
+            take.TakenDate = localDate;
+            take.Returned = false;
+
+             await _context.TakenBooks.AddAsync(take);
+
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
