@@ -1,0 +1,18 @@
+﻿@using Library_Managment.Areas.Admin.Models;
+@using Microsoft.AspNetCore.Identity;
+@model List<UserNewData>
+@{
+    ViewData["Title"] = "Return Book";
+
+}
+<ul>
+    <li>Taken by</li>
+    <h1>@ViewBag.BookId</h1>
+
+
+    @foreach (var user in Model) {
+        <li> <a asp-area="Admin" asp-controller="Books" asp-action="ReturnBookFromUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId" class="btn btn-light">@user.Name @user.Surname,  @user.Email</a></li>
+
+    }
+</ul>
+

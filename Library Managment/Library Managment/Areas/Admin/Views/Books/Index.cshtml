@@ -55,7 +55,13 @@
                 if (item.Available != 0) {
                     <a class="btn btn-info" asp-action="GiveBook" asp-route-id="@item.Id">Give Book</a>
                 } else {
-                    <label class="btn btn-info">Give Book</label>
+                    <label class="btn btn-secondary">Give Book</label>
+                }
+
+                if (item.Available != item.Amount) {
+                    <a class="btn btn-info" asp-action="ReturnBook" asp-route-id="@item.Id">Return Book</a>
+                } else {
+                    <label class="btn btn-secondary">Return Book</label>
                 }
             }
         </div>

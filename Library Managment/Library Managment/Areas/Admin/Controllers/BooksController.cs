@@ -259,10 +259,56 @@ namespace Library_Managment.Areas.Admin.Controllers
             take.TakenDate = localDate;
             take.Returned = false;
 
-             await _context.TakenBooks.AddAsync(take);
+            Book tempBook = _context.Books.Find(BookId);
+            tempBook.Available = tempBook.Available - 1;
 
-            _context.SaveChanges();
+            _context.Books.Update(tempBook);
+            
+            
+
+            await _context.TakenBooks.AddAsync(take);
+
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult ReturnBook(int id) {
+            ViewBag.BookId = id;
+
+
+            List<TakenBooks> takenBooks = _context.TakenBooks.Where(e => e.BookId == id && e.Returned == false).ToList();
+
+            List<UserNewData> users = new List<UserNewData>();
+
+            foreach(var item in takenBooks) {
+                UserNewData temp = _context.Users.Find(item.UserId);
+                users.Add(temp);
+            }
+
+
+
+            return View(users);
+        }
+
+        public async Task<IActionResult> ReturnBookFromUserAsync(string UserId,int BookId) {
+
+            TakenBooks takenBook = _context.TakenBooks.Where(e => e.BookId == BookId && e.UserId == UserId && e.Returned == false).First();
+            DateTime localDate = DateTime.Now;
+
+            takenBook.Returned = true;
+            takenBook.ReturnDate = localDate;
+
+
+            Book tempBook = _context.Books.Find(BookId);
+            tempBook.Available = tempBook.Available + 1;
+
+
+            _context.Books.Update(tempBook);
+            _context.TakenBooks.Update(takenBook);
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

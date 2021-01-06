@@ -1879,3 +1879,4 @@ C:\Users\IT\Desktop\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\net
 C:\Users\IT\Desktop\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Library Managment.pdb
 C:\Users\IT\Desktop\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Library Managment.genruntimeconfig.cache
 C:\Users\IT\Desktop\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Books\GiveBook.cshtml.g.cs
+C:\Users\IT\Desktop\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Books\ReturnBook.cshtml.g.cs
