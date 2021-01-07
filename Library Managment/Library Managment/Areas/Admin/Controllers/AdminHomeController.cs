@@ -71,10 +71,17 @@ namespace Library_Managment.Areas.Admin.Controllers {
             int pageSize = 10;
             return View(await PaginatedList<UserNewData>.CreateAsync(users.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
-      
 
+        
         public async Task<IActionResult> DeleteUser(string Id) {
             var user = _context.Users.First(m => m.Id == Id);
+
+          var DeleteRows = _context.TakenBooks.Where(e => e.UserId == Id).ToList();
+
+            foreach(var row in DeleteRows) {
+                _context.TakenBooks.Remove(row);
+            }
+
             _context.Users.Remove(user);
            await _context.SaveChangesAsync();
 

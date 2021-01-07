@@ -11,10 +11,13 @@
         margin-bottom: 2px;
     }
 </style>
+<a class="btn btn-primary" asp-controller="Books" asp-action="Index">Cancel</a>
 <div class="container">
     <h1>@ViewData["Title"]</h1>
+
     <br />
     <form asp-controller="Books" asp-action="GiveBook" method="get">
+
         <div class="form-inline ">
             <p>
                 <input type="text" name="SearchString" class="form-control" style="max-width:400px;" value="@ViewData["CurrentFilter"]" placeholder="Give book to user" />
@@ -25,13 +28,14 @@
     </form>
     <br />
 
-    <ul>
-        @foreach (var user in Model) {
-            <li> <a asp-area="Admin" asp-controller="Books" asp-action="GiveBookToUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId" class="btn btn-light">@user.Name @user.Surname,  @user.Email</a></li>
-        }
+    <div style="width:500px">
+        <ul class="list-group">
+            @foreach (var user in Model) {
+                <li class="list-group-item"><a class="alert-link" asp-area="Admin" asp-controller="Books" asp-action="GiveBookToUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId" class="btn btn-light">@user.Name @user.Surname,  @user.Email</a></li>
 
-    </ul>
-
+            }
+        </ul>
+    </div>
 
 
 

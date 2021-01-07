@@ -55,13 +55,13 @@
                 if (item.Available != 0) {
                     <a class="btn btn-info" asp-action="GiveBook" asp-route-id="@item.Id">Give Book</a>
                 } else {
-                    <label class="btn btn-secondary">Give Book</label>
+                    <label class="btn btn-secondary" style="margin:2px;">Give Book</label>
                 }
 
                 if (item.Available != item.Amount) {
-                    <a class="btn btn-info" asp-action="ReturnBook" asp-route-id="@item.Id">Return Book</a>
+                    <a class="btn btn-info" asp-action="ReturnBook" asp-route-id="@item.Id" style="margin:2px;">Return Book</a>
                 } else {
-                    <label class="btn btn-secondary">Return Book</label>
+                    <label class="btn btn-secondary" style="margin:2px;">Return Book</label>
                 }
             }
         </div>
@@ -69,20 +69,64 @@
     }
 </div>
 
-<div class="container">
-    @{
-        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-    }
+    <div class="modal" tabindex="-1" role="dialog" id="BookNotReturnedByUser">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Problem</h5>
+                  
+                </div>
+                <div class="modal-body">
+                    <p>User has not returned previous book yet.</p>
+                    <p>Click anywhere outside the box to close it</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
 
-    <a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" 
-       asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="btn btn-primary @prevDisabled"> Previous 
-    </a>
+    <script>
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var returned = url.searchParams.get("returned");
+        console.log(returned);
+        var modal = document.getElementById('BookNotReturnedByUser');
+        if (returned == 'False') {
+            modal.style.display = "block";
+        }
 
-    <a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]"
-       asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="btn btn-primary @nextDisabled"> Next
-    </a>
 
-</div>
+
+        var modal = document.getElementById('BookNotReturnedByUser');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+   
+
+    </script>
+
+
+    <div class="container">
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-primary @prevDisabled">
+            Previous
+        </a>
+
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-primary @nextDisabled">
+            Next
+        </a>
+
+    </div>

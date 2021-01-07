@@ -11,7 +11,7 @@
     <form asp-action="DisplayUsers" method="get">
         <div class="form-inline ">
             <p>
-                <input type="text" name="SearchString" class="form-control" style="max-width:400px;" value="@ViewData["CurrentFilter"]" placeholder="Find Book" />
+                <input type="text" name="SearchString" class="form-control" style="max-width:400px;" value="@ViewData["CurrentFilter"]" placeholder="Find User" />
                 <input type="submit" value="Search" class="btn btn-success" /> -
                 <a class="btn btn-primary" asp-action="DisplayUsers">Back to Full List</a>
             </p>
@@ -24,6 +24,7 @@
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Email/Username</th>
+                <th>Change Role</th>
                 <th>Delete</th>
             </tr>
         </thead>

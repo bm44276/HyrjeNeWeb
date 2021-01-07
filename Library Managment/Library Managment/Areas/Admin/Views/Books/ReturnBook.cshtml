@@ -5,14 +5,14 @@
     ViewData["Title"] = "Return Book";
 
 }
-<ul>
-    <li>Taken by</li>
-    <h1>@ViewBag.BookId</h1>
+<a class="btn btn-primary" asp-controller="Books" asp-action="Index" style="margin-bottom:10px;">Cancel</a>
 
+<h5>Book is taken by:</h5>
+<div style="width:500px">
+    <ul class="list-group">
+        @foreach (var user in Model) {
+            <li class="list-group-item"><a class="alert-link" asp-area="Admin" asp-controller="Books" asp-action="ReturnBookFromUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId" class="btn btn-light">@user.Name @user.Surname,  @user.Email</a></li>
 
-    @foreach (var user in Model) {
-        <li> <a asp-area="Admin" asp-controller="Books" asp-action="ReturnBookFromUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId" class="btn btn-light">@user.Name @user.Surname,  @user.Email</a></li>
-
-    }
-</ul>
-
+        }
+    </ul>
+</div>

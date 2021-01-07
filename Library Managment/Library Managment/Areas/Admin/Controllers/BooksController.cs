@@ -250,26 +250,38 @@ namespace Library_Managment.Areas.Admin.Controllers
 
 
         public async Task<IActionResult> GiveBookToUser(string UserId, int BookId) {
-            DateTime localDate = DateTime.Now;
-            
 
-            TakenBooks take = new TakenBooks();
-            take.UserId = UserId;
-            take.BookId = BookId;
-            take.TakenDate = localDate;
-            take.Returned = false;
+            var userNotReturnedBook = _context.TakenBooks.Where(e => e.UserId == UserId && e.Returned == false).Count();
 
-            Book tempBook = _context.Books.Find(BookId);
-            tempBook.Available = tempBook.Available - 1;
+            if (userNotReturnedBook == 0) {
 
-            _context.Books.Update(tempBook);
-            
-            
+                DateTime localDate = DateTime.Now;
 
-            await _context.TakenBooks.AddAsync(take);
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+                TakenBooks take = new TakenBooks();
+                take.UserId = UserId;
+                take.BookId = BookId;
+                take.TakenDate = localDate;
+                take.Returned = false;
+
+                Book tempBook = _context.Books.Find(BookId);
+                tempBook.Available = tempBook.Available - 1;
+
+                _context.Books.Update(tempBook);
+
+
+
+                await _context.TakenBooks.AddAsync(take);
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            } else {
+
+
+
+                return RedirectToAction(nameof(Index), new { returned = false});
+            }
+
         }
 
         public IActionResult ReturnBook(int id) {
