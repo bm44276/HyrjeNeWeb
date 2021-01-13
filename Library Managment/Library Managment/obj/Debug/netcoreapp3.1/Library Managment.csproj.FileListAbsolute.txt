@@ -2109,3 +2109,4 @@ C:\Users\IT SOLUTION\Desktop\HyrjeNeWeb\Library Managment\Library Managment\obj\
 C:\Users\IT SOLUTION\Desktop\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Library Managment.dll
 C:\Users\IT SOLUTION\Desktop\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Library Managment.pdb
 C:\Users\IT SOLUTION\Desktop\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Library Managment.genruntimeconfig.cache
+C:\Users\IT\Desktop\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\UserHome\BookHistory.cshtml.g.cs

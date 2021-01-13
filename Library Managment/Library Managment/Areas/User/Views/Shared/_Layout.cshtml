@@ -6,47 +6,124 @@
     <title>@ViewData["Title"] - Library_Managment</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/animate.css">
+
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="~/css/aos.css">
+
+    <link rel="stylesheet" href="~/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/icomoon.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <link rel="stylesheet" href="~/css/bookdeets.css">
 </head>
 <body>
     @using Library_Managment.Models;
     @using Microsoft.AspNetCore.Identity;
     @inject UserManager<UserNewData> _userManager;
-    @{ 
+    @{
         var user = await _userManager.GetUserAsync(User);
 
         var roles = await _userManager.GetRolesAsync(user);
     }
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header >
+
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light">
             <div class="container">
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li>
-                            <a class="navbar-brand" asp-area="User" asp-controller="UserHome" asp-action="Index">Home</a>
-                        </li>
+                <a class="navbar-brand" asp-area="User" asp-controller="UserHome" asp-action="Index"><span>LMS</span></a>
+                <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="oi oi-menu"></span> Menu
+                </button>
+
+                <div class="collapse navbar-collapse">
+
+                    <ul class="navbar-nav nav ml-auto">
+                        <li class="nav-item"><a asp-area="User" asp-controller="UserHome" asp-action="Index" class="nav-link"><span>Home</span></a></li>
                         @{
                             if (roles[0] == "Admin") {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminHome" asp-action="Index">Admin Panel</a>
+                                    <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminHome" asp-action="Index">Admin Panel</a>
                                 </li>
                             }
                         }
 
+                        <li class="nav-item"><a asp-controller="UserHome" asp-area="User" asp-action="BookHistory" class="nav-link"><span>Book History</span></a></li>
+                        <partial name="_LoginPartial" />
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        <div class="container-fluid">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    
 
-    <footer class="border-top footer text-muted">
+    <footer class="ftco-footer ftco-section">
         <div class="container">
-            &copy; 2020 - Library_Managment - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">LMS</h2>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
+                            repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
+                            harum esse fugiat. Itaque, culpa?
+                        </p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <li<a href="#"></a></li>
+                            <li<a href="#"></a></li>
+                            <li<a href="#"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md" style="margin-left: 120px;">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">Links</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Book History</a></li>
+                            <li><a href="#">Search</a></li>
+                            <li><a href="#">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Have a Question?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="text"> Ferizaj, Republika e Kosoves</span></li>
+                                <li><a href="#">+383 123456</span></a></li>
+                                <li><a href="#"><span class="text">info@lsm.com</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved
+                    <p>Marigona Kadriu, Besmir Miftari, Jon Morina</p>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
