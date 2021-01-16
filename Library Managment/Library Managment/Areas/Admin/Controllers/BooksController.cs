@@ -290,11 +290,21 @@ namespace Library_Managment.Areas.Admin.Controllers
 
             List<TakenBooks> takenBooks = _context.TakenBooks.Where(e => e.BookId == id && e.Returned == false).ToList();
 
-            List<UserNewData> users = new List<UserNewData>();
+            List<TakenByUser> users = new List<TakenByUser>();
+         
 
             foreach(var item in takenBooks) {
                 UserNewData temp = _context.Users.Find(item.UserId);
-                users.Add(temp);
+
+                TakenByUser tempUser = new TakenByUser {
+                    Id = temp.Id,
+                    Name = temp.Name,
+                    Surname = temp.Surname,
+                    Email = temp.Email,
+                    TakenDate = item.TakenDate
+                };
+
+                users.Add(tempUser);
             }
 
 

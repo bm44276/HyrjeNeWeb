@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Library_Managment.Areas.User.Models {
+    public class TakenBooks {
+        public int Id { get; set; }
+        public long ISBN { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Genre { get; set; }
+        public string Author { get; set; }
+        public DateTime PublishDate { get; set; }
+        public string Image { get; set; }
+        public int Amount { get; set; }
+        public int Available { get; set; }
+
+        public DateTime TakenDate { get; set; }
+        public DateTime? ReturnDate { get; set; }
+    }
+}

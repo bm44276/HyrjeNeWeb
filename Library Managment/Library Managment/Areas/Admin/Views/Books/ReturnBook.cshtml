@@ -1,6 +1,6 @@
 ﻿@using Library_Managment.Areas.Admin.Models;
 @using Microsoft.AspNetCore.Identity;
-@model List<UserNewData>
+@model List<TakenByUser>
 @{
     ViewData["Title"] = "Return Book";
 
@@ -11,8 +11,8 @@
 <div style="width:500px">
     <ul class="list-group">
         @foreach (var user in Model) {
-            <li class="list-group-item"><a class="alert-link" asp-area="Admin" asp-controller="Books" asp-action="ReturnBookFromUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId" class="btn btn-light">@user.Name @user.Surname,  @user.Email</a></li>
-
+            <li class="list-group-item"><a class="alert-link" asp-area="Admin" asp-controller="Books" asp-action="ReturnBookFromUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId" class="btn btn-light">@user.Name @user.Surname,  @user.Email</a> <p>Taken on: @user.TakenDate</p></li>
+            
         }
     </ul>
 </div>

@@ -1,4 +1,4 @@
-﻿@model List<Library_Managment.Models.Book>;
+﻿@model List<Library_Managment.Areas.User.Models.TakenBooks>;
 
 <div class="container" id="container">
     <div class="row image-grid" style="border: 3px solid red; ">
@@ -16,6 +16,9 @@
 
                         <h3>@book.Name</h3>
                         <span>@book.Author</span>
+
+                        <p>Taken on: @book.TakenDate</p>
+                        <p>Returned at: @book.ReturnDate</p>
                     </div>
                 </div>
             </div>
