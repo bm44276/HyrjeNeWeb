@@ -1,0 +1,18 @@
+﻿@model Library_Managment.Models.Book;
+
+<div id="bookdeets">
+    <img id="bookimg" src="images/book1.jpg" alt="">
+    <div id="deets">
+        <p id="p">@Model.ISBN</p>
+        <p id="p">@Model.Name</p>
+        <p id="p">@Model.Author</p>
+        <p id="p">@Model.PublishDate</p>
+        <@{
+            if(Model.Available != 0) {
+                 <p id="p">Available @Model.Available / @Model.Amount</p>
+            } else {
+                   <p id="p">Not Available @Model.Available / @Model.Amount</p>
+            }
+        }
+    </div>
+</div>

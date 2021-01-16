@@ -33,5 +33,16 @@ namespace Library_Managment.Areas.User.Controllers {
 
             return View();
         }
+
+        [HttpPost]
+        public IActionResult SearchBook(string searchtext) {
+
+            List<Book> books = _context.Books.FromSqlRaw($"SELECT * FROM Books WHERE Name LIKE '%{searchtext}%' OR Author LIKE '%{searchtext}%'").ToList<Book>();
+            return View("SearchResults",books);
+        }
+
+        public IActionResult BookDetails(int id) {
+            return View();
+        }
     }
 }

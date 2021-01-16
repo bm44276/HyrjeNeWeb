@@ -1,0 +1,27 @@
+﻿@model List<Library_Managment.Models.Book>;
+
+<div class="container" id="container">
+    <div class="row image-grid" style="border: 3px solid red; ">
+
+        @foreach (var book in Model) {
+
+            <div class="col-sm-3 col-md-3" style="margin: 5px;  background-color: rgba(255, 241, 241, 0.712);">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="" target="_blank">
+                            <img alt="images/book1" class="img-responsive center-block" src="~/BookImages/@book.Image">
+                        </a>
+                    </div>
+                    <div class="panel-footer">
+
+                        <h3>@book.Name</h3>
+                        <span>@book.Author</span>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+    </div>
+</div>

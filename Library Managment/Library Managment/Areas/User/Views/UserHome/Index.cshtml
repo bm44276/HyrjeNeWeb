@@ -14,8 +14,11 @@
             <div class="col-md-8 ftco-animate mt-5" data-scrollax=" properties: { translateY: '70%' }">
 
                 <div id="searchbar">
-                    <input type="text" id="search">
-                    <input type="button" value="Search" id="sbttn">
+                    <form asp-area="User" asp-controller="UserHome" asp-action="SearchBook" method="post">
+                        <input type="text"  id="search" name="searchtext">
+                        <button id="sbttn">>Search</button>
+                    </form>
+                    
                 </div>
 
             </div>
