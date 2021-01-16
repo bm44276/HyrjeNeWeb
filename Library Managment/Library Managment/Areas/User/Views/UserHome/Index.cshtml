@@ -43,10 +43,12 @@
                         foreach (var item in ViewBag.NewestBooks) {
                             <div class="item">
                                 <div class="project">
-                                    <div class="img">
-                                        <a href="book1.html"><img src="~/BookImages/@item.Image" class="img-fluid" alt="Colorlib Template"></a>
-
-                                    </div>
+                                                        <div class="img">
+                                                          <!--  <a href="book1.html"><img src="~/BookImages/@item.Image"  alt="Colorlib Template"></a>-->
+                                                            <a class="img-fluid" asp-area="User" asp-controller="UserHome" asp-action="BookDetails" asp-route-id="@item.Id">
+                                                                <img alt="images/book1" class="img-responsive center-block" src="~/BookImages/@item.Image">
+                                                            </a>
+                                                        </div>
                                     <div class="text px-4">
                                         <h3><a href="#">@item.Name</a></h3>
                                         <span>@item.Author</span>

@@ -1,6 +1,7 @@
 ﻿using Library_Managment.Data;
 using Library_Managment.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,9 +15,10 @@ namespace Library_Managment.Areas.User.Controllers {
     [Authorize]
     public class UserHomeController : Controller {
         private readonly ApplicationDbContext _context;
-        
-        public UserHomeController(ApplicationDbContext context) {
+        private readonly UserManager<UserNewData> _userManager;
+        public UserHomeController(ApplicationDbContext context,UserManager<UserNewData> userManager) {
             _context = context;
+            _userManager = userManager;
         }
 
         public IActionResult Index() {
@@ -28,10 +30,23 @@ namespace Library_Managment.Areas.User.Controllers {
             return View();
         }
 
-        public IActionResult BookHistory() {
+        public async Task<IActionResult> BookHistoryAsync() {
 
 
-            return View();
+            var current = await _userManager.GetUserAsync(User);
+
+            var userRows = _context.TakenBooks.OrderByDescending(x => x.Id).Where(x => x.UserId == current.Id);
+
+
+            List<Book> books = new List<Book>();
+
+
+            foreach (var row in userRows) {
+                var book = _context.Books.Find(row.BookId);
+                books.Add(book);
+            }
+
+            return View(books);
         }
 
         [HttpPost]
@@ -42,7 +57,8 @@ namespace Library_Managment.Areas.User.Controllers {
         }
 
         public IActionResult BookDetails(int id) {
-            return View();
+            Book book = _context.Books.Find(id);
+            return View(book);
         }
     }
 }
