@@ -34,28 +34,29 @@ namespace Library_Managment.Areas.User.Controllers {
             ViewBag.NewestBooks = NewestBooks;
 
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["Author"] = sortOrder == "author_desc" ? "author_asc" : "author_desc";
-            ViewData["Date"] = sortOrder == "date_asc" ? "date_desc" : "date_asc";
+           /* ViewData["Author"] = sortOrder == "author_desc" ? "author_asc" : "author_desc";*/
+            ViewData["Drama"] = sortOrder == "Drama" ? "Drama" : "Drama";
+            ViewData["Romance"] = sortOrder == "Romance" ? "Romance" : "Romance";
+            ViewData["Thriller"] = sortOrder == "Thriller" ? "Thriller" : "Thriller";
+            ViewData["Biography"] = sortOrder == "Biography" ? "Biography" : "Biography";
+
             var books = from s in _context.Books
                         select s;
             switch (sortOrder) {
-                case "name_desc":
-                    books = books.OrderBy(s => s.Name);
+                case "Drama":
+                    books = books.Where(s => s.Genre == "Drama") ;
                     break;
-                case "author_desc":
-                    books = books.OrderByDescending(s => s.Author);
+                case "Thriller":
+                    books = books.Where(s => s.Genre == "Thriller");
                     break;
-                case "author_asc":
-                    books = books.OrderBy(s => s.Author);
+                case "Biography":
+                    books = books.Where(s => s.Genre == "Biography");
                     break;
-                case "date_desc":
-                    books = books.OrderByDescending(s => s.PublishDate);
-                    break;
-                case "date_asc":
-                    books = books.OrderBy(s => s.PublishDate);
+                case "Romance":
+                    books = books.Where(s => s.Genre == "Romance");
                     break;
                 default:
-                    books = books.OrderBy(s => s.ISBN);
+                    books = books;
                     break;
             }
 
@@ -100,8 +101,13 @@ namespace Library_Managment.Areas.User.Controllers {
 
         [HttpPost]
         public IActionResult SearchBook(string searchtext) {
-
+           
             List<Book> books = _context.Books.FromSqlRaw($"SELECT * FROM Books WHERE Name LIKE '%{searchtext}%' OR Author LIKE '%{searchtext}%'").ToList<Book>();
+
+           if(books.Count == 0) {
+                return View("404");
+            }
+
             return View("SearchResults",books);
         }
 

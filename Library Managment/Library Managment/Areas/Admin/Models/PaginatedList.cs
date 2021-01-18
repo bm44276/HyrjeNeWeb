@@ -33,5 +33,9 @@ namespace Library_Managment.Areas.Admin.Models {
             var items = await source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
             return new PaginatedList<T>(items, count, pageIndex, pageSize);
         }
+
+        internal static Task<object> CreateAsync<TEntity>(IQueryable<TEntity> queryables, int v, int pageSize) where TEntity : class {
+            throw new NotImplementedException();
+        }
     }
 }

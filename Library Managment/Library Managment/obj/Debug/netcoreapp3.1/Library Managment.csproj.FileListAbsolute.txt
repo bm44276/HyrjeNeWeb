@@ -2576,3 +2576,4 @@ C:\Users\IT\Desktop\HyrjeNeWeb\HyrjeNeWeb\Library Managment\Library Managment\ob
 C:\Users\IT\Desktop\HyrjeNeWeb\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Library Managment.dll
 C:\Users\IT\Desktop\HyrjeNeWeb\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Library Managment.pdb
 C:\Users\IT\Desktop\HyrjeNeWeb\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Library Managment.genruntimeconfig.cache
+C:\Users\IT\Desktop\HyrjeNeWeb\HyrjeNeWeb\Library Managment\Library Managment\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\UserHome\404.cshtml.g.cs
