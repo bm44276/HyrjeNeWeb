@@ -104,7 +104,7 @@ namespace Library_Managment.Areas.User.Controllers {
            
             List<Book> books = _context.Books.FromSqlRaw($"SELECT * FROM Books WHERE Name LIKE '%{searchtext}%' OR Author LIKE '%{searchtext}%'").ToList<Book>();
 
-           if(books.Count == 0) {
+           if(books.Count == 0 || searchtext == null || searchtext.Length <=1) {
                 return View("404");
             }
 

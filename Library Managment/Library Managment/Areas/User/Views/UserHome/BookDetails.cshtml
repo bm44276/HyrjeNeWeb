@@ -1,18 +1,74 @@
 ﻿@model Library_Managment.Models.Book;
 
-<div id="bookdeets">
-    <img id="bookimg" src="~/BookImages/@Model.Image" alt="">
-    <div id="deets">
-        <p id="p">@Model.ISBN</p>
-        <p id="p">@Model.Name</p>
-        <p id="p">@Model.Author</p>
-        <p id="p">@Model.PublishDate</p>
-        <@{
+<head>
+   
+    <style>
+        .bookdeets {
+            background-color: #F2ECFF;
+            padding: 30px;
+            display: flex;
+            margin: 40px;
+        }
+
+        .part1, .part2 {
+            background-color: #FFF;
+            text-align: center;
+            padding: 30px;
+            margin: 10px;
+        }
+
+        .img {
+            margin: 10px;
+            text-align: center;
+            padding: 20px;
+            background-color: #FDFDFE;
+            box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+        }
+
+        .part2 {
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+            -moz-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+            -o-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+            margin: 30px;
+        }
+
+        .part1 {
+            border-radius: 10px;
+        }
+        .img img{
+            width:100%;
+            height:100%
+        }
+    </style>
+</head>
+
+<div class="container">
+    <div class="bookdeets">
+        <div class="part1">
+            <div class="img"><img src="~/BookImages/@Model.Image" alt=""></div>
+            <h4>@Model.Author</h4>
+            <h5>@Model.PublishDate</h5>
+           
+             @{
             if(Model.Available != 0) {
-                 <p id="p">Available @Model.Available / @Model.Amount</p>
+                 <h3>Available @Model.Available / @Model.Amount</h3>
             } else {
-                   <p id="p">Not Available @Model.Available / @Model.Amount</p>
+                   <h3>Not Available @Model.Available / @Model.Amount</h3>
             }
         }
-    </div>
+          
+        </div>
+        <div class="part2">
+            <h5>@Model.ISBN</h5>
+            <h2>@Model.Name</h2>
+            <h4>@Model.Description</h4>
+        </div>
+        </div>
 </div>
