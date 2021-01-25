@@ -5,14 +5,38 @@
     ViewData["Title"] = "Return Book";
 
 }
+<br /><br />
 <a class="btn btn-primary" asp-controller="Books" asp-action="Index" style="margin-bottom:10px;">Cancel</a>
 
-<h5>Book is taken by:</h5>
-<div style="width:500px">
-    <ul class="list-group">
-        @foreach (var user in Model) {
-            <li class="list-group-item"><a class="alert-link" asp-area="Admin" asp-controller="Books" asp-action="ReturnBookFromUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId" class="btn btn-light">@user.Name @user.Surname,  @user.Email</a> <p>Taken on: @user.TakenDate</p></li>
-            
-        }
-    </ul>
+<h5 style="font-family: 'Arvo', serif;" class="text-center">Book is taken by:</h5>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Taken Date</th>
+                <th>Return Book</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model) {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Surname</td>
+                <td>@user.Email</td>
+                <td>@user.TakenDate</td>
+                <td>
+                <a class="btn btn-success " asp-area="Admin" asp-controller="Books" asp-action="ReturnBookFromUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId">Return</a>
+                </td>
+            </tr>
+            }
+
+
+        </tbody>
+    </table>
 </div>
+<br />
+<br />
+<br />

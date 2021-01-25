@@ -7,19 +7,20 @@
 }
 
 
-<div style="height:1080px;">
-    <div class="container-fluid">
-        <h1 class="text-center">@ViewData["Title"]</h1>
+<div style="height:1000px;">
+    <div class="container-fluid load">
         <br />
-        <br />
+        <h2 class=" text-center mbr-light pb-3 display-1">@ViewData["Title"]</h2>
         <div class="row">
-            <div class="col-md text-black">
-                <p style="max-width: 600px" class="par">"Bad libraries build collections,<br>  good libraries build services, great libraries build communities." <br /> - R. David Lankes </p>
+            <div class="col-md text-black article">
+                <p style="max-width: 600px" class="par">
+                    "Bad libraries build collections,<br>  good libraries build services, great libraries build communities." <br /> - R. David Lankes
+                </p>
             </div>
-            <br /><br />
+            <br />
             <div class="col-md">
-                <form id="account" method="post">
-                    <h4>Use a local account to log in.</h4>
+                <form class="forms-load" id="account" method="post">
+                    <h4 class="text-white">Use a local account to log in.</h4>
                     <hr />
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="form-group">
@@ -32,7 +33,7 @@
                         <input style="max-width: 600px" asp-for="Input.Password" class="form-control" />
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group  box-input">
                         <div class="checkbox">
                             <label asp-for="Input.RememberMe">
                                 <input asp-for="Input.RememberMe" />
@@ -54,9 +55,6 @@
             </div>
 
         </div>
-        <br />
-        <br />
-        <br />
     </div>
 
 </div>

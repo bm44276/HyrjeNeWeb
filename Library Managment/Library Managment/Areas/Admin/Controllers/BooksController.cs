@@ -31,7 +31,9 @@ namespace Library_Managment.Areas.Admin.Controllers
         {
             ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["Author"] = sortOrder == "author_desc" ? "author_asc" : "author_desc";
+            ViewData["Date"] = sortOrder == "date_asc" ? "date_desc" : "date_asc";
+
 
             if (searchString != null) {
                 pageNumber = 1;
@@ -42,20 +44,26 @@ namespace Library_Managment.Areas.Admin.Controllers
             ViewData["CurrentFilter"] = searchString;
 
             var books = from s in _context.Books
-                           select s;
+                        select s;
             if (!String.IsNullOrEmpty(searchString)) {
                 books = books.Where(s => s.Author.Contains(searchString)
                                        || s.Name.Contains(searchString));
             }
             switch (sortOrder) {
                 case "name_desc":
-                    books = books.OrderByDescending(s => s.Name);
+                    books = books.OrderBy(s => s.Name);
                     break;
-                case "Date":
-                    books = books.OrderBy(s => s.Image);
+                case "author_desc":
+                    books = books.OrderByDescending(s => s.Author);
+                    break;
+                case "author_asc":
+                    books = books.OrderBy(s => s.Author);
                     break;
                 case "date_desc":
                     books = books.OrderByDescending(s => s.PublishDate);
+                    break;
+                case "date_asc":
+                    books = books.OrderBy(s => s.PublishDate);
                     break;
                 default:
                     books = books.OrderBy(s => s.ISBN);

@@ -1,91 +1,119 @@
-.div-space{
+.div-space {
     margin-right: 15px;
     margin-left: 15px;
     border-radius: 30px;
     text-align: center;
 }
+
 .div-back-color {
     background-image: linear-gradient(to right top, #168cd8, #009bdf, #00a9e5, #00b7e9, #12c5eb);
 }
-.text-padd{
-    padding: 10px;
+.img-first-div{
+    animation: img-loader 1s ease-in 800ms;
+    animation-fill-mode:forwards;
+    transform: scale(0);
 }
-.div-for-space{
-    margin-top: 100px;
-}
-
-.top-image{
-    width: 50%;
-    margin: 0 auto;
-    transition: 2s;
-    cursor: pointer;
-    display: block;
+.box-div {
+    background-color: floralwhite;
 }
 
-.top-image:hover{
-    transition: 2s;
-    width: 55%;
-}
-
-.img-book {
-    background-color: #2B335B;
-    padding: 13px 8px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 30px;
-    border-top-right-radius: 30px;
-    border-top-left-radius: 20px;
-}
-
-.all-div {
-    background-color: #f2f2f2;
-}
-
-.b-div {
-    border-radius: 40px;
-    cursor: pointer;
-    transition: 2s;
-    background-image: linear-gradient(to right top, #168cd8, #009bdf, #00a9e5, #00b7e9, #12c5eb);
-    color:white;
-}
-
- .b-div:hover {
-        font-size: 24px;
-        border-radius: 60px;
-        cursor: pointer;
-        transition: 2s;
- }
-
-
-.j-div {
-    border-radius: 40px;
-    cursor: pointer;
-    transition: 2s;
-    background-image: linear-gradient(to right top, #168cd8, #009bdf, #00a9e5, #00b7e9, #12c5eb);
-    color: white;
-}
-
-    .j-div:hover {
-        font-size:24px;
-        border-radius: 60px;
-        cursor: pointer;
-        transition: 2s;
-        background-color: #1d91f0;
+    .box-div p {
+        font-size: 18px;
+        font-style: italic;
+        word-spacing: 4px;
+        letter-spacing: 4px;
+        font-family: Georgia, "Times New Roman", serif;
     }
 
-
-
-.m-div {
-    border-radius: 40px;
-    cursor: pointer;
-    transition: 2s;
-    background-image: linear-gradient(to right top, #168cd8, #009bdf, #00a9e5, #00b7e9, #12c5eb);
-    color: white;
+.quote-par {
+    font-style: italic;
+    word-spacing: 2px;
+    letter-spacing: 4px;
+    font-family: Georgia, "Times New Roman", serif;
 }
 
-    .m-div:hover {
-        font-size: 24px;
-        border-radius: 60px;
-        cursor: pointer;
-        transition: 2s;
-        background-color: #1d91f0;
+.h4-title {
+    font-family: 'Comic Sans MS';
+    letter-spacing: 2px;
+    word-spacing: 1px;
+    text-align: center;
+    animation: 2s div-title ease-in 6.2s;
+    animation-fill-mode: forwards;
+    transform: scale(0);
+}
+
+.img-div-bes {
+    height: 400px;
+    background-image: url(../Img/AboutUs/Besmir.jpg);
+    background-size: cover;
+    overflow: hidden;
+    animation: 2s div-bes ease-in 400ms;
+    animation-fill-mode: forwards;
+    transform:scale(0);
+}
+
+
+.img-div-jon {
+    height: 400px;
+    background-image: url(../Img/AboutUs/Jon.jpg);
+    background-size: cover;
+    overflow: hidden;
+    animation: 2s div-jon ease-in 4s;
+    animation-fill-mode: forwards;
+    transform:scale(0);
+}
+
+.img-div-mar {
+    height: 400px;
+    background-image: url(../Img/AboutUs/Marigona.jpg);
+    background-size: cover;
+    overflow: hidden;
+    animation: 2s div-mar ease-in 2s;
+    animation-fill-mode: forwards;
+    transform: scale(0);
+}
+@keyframes img-loader{
+    0%{
+        transform: scale(0);
     }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes div-mar{
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes div-bes {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes div-jon {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes div-title {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

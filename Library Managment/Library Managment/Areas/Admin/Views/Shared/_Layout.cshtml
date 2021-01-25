@@ -6,35 +6,39 @@
     <title>@ViewData["Title"] - Library_Managment</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/admin.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@1,700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-toggleable-sm ftco_navbar bg-light" id="navcstm" style="box-shadow: 0px 1px grey;">
             <div class="container">
                 <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-light " asp-area="User" asp-controller="UserHome" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark " asp-area="User" asp-controller="UserHome" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminHome" asp-action="DisplayUsers">Users</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminHome" asp-action="DisplayUsers">Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="Admin" asp-controller="Books" asp-action="Index">Books</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Books" asp-action="Index">Books</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="Admin" asp-controller="Contacts" asp-action="Index">Contacts</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Contacts" asp-action="Index">Contacts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
                         </li>
                         <li class="nav-item">
                             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
+                                <button type="submit" class="nav-item btn btn-light">Logout</button>
                             </form>
                         </li>
                     </ul>  
@@ -43,14 +47,65 @@
         </nav>
     </header>
     <div class="container-fluid">
-        <main role="main" class="pb-3">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="ftco-footer ftco-section">
         <div class="container">
-            &copy; 2020 - Library_Managment - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">LMS</h2>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
+                            repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
+                            harum esse fugiat. Itaque, culpa?
+                        </p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <li<a href="#"></a></li>
+                            <li<a href="#"></a></li>
+                            <li<a href="#"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md" style="margin-left: 120px;">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">Links</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Book History</a></li>
+                            <li><a href="#">Search</a></li>
+                            <li><a href="#">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Have a Question?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="text"> Ferizaj, Republika e Kosoves</span></li>
+                                <li><a href="#">+383 123456</span></a></li>
+                                <li><a href="#"><span class="text">info@lsm.com</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved
+                    <p>Marigona Kadriu, Besmir Miftari, Jon Morina</p>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -1,0 +1,90 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+.book-img {
+    height: 350px;
+    width: 255px;
+}
+
+.adminArea {
+    background-color: floralwhite;
+    height: 800px;
+    color: black;
+    
+}
+.admin-loader{
+    animation: admin-panel-load 1s ease-in 700ms;
+    transform: translateX(100%);
+    animation-fill-mode: forwards;
+}
+
+    .adminArea h1 {
+        text-align: center;
+        font-family: Andale Mono, monospace;
+        word-spacing: 3px;
+        letter-spacing: 1px;
+    }
+
+blockquote {
+    font-style: italic;
+    font-size: 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+}
+
+h6 {
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+}
+
+h3 {
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-weight: bold
+}
+
+.manage {
+    background-color: #336699;
+    height: 800px;
+    color: floralwhite;
+   
+}
+.manage-loader{
+ animation: manage-load 700ms ease-in 600ms;
+    transform: translateX(-100%);
+    animation-fill-mode: forwards;
+}
+@keyframes manage-load {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes admin-panel-load {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes nav-load {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+

@@ -5,15 +5,11 @@
 @{
     ViewData["Title"] = "Give Book";
 }
-<style>
-    ul li {
-        list-style: none;
-        margin-bottom: 2px;
-    }
-</style>
+<br />
+<br />
 <a class="btn btn-primary" asp-controller="Books" asp-action="Index">Cancel</a>
 <div class="container">
-    <h1>@ViewData["Title"]</h1>
+    <h1 style="font-family: 'Arvo', serif;" class="text-center">@ViewData["Title"]</h1>
 
     <br />
     <form asp-controller="Books" asp-action="GiveBook" method="get">
@@ -28,14 +24,28 @@
     </form>
     <br />
 
-    <div style="width:500px">
-        <ul class="list-group">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Give Book</th>
+            </tr>
+        </thead>
+        <tbody>
             @foreach (var user in Model) {
-                <li class="list-group-item"><a class="alert-link" asp-area="Admin" asp-controller="Books" asp-action="GiveBookToUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId" class="btn btn-light">@user.Name @user.Surname,  @user.Email</a></li>
-
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Surname</td>
+                    <td>@user.Email</td>
+                    <td><a class="btn btn-outline-success" asp-area="Admin" asp-controller="Books" asp-action="GiveBookToUser" asp-route-UserId="@user.Id" asp-route-BookId="@ViewBag.BookId" class="btn btn-light">Give Book</a></td>
+                </tr>
             }
-        </ul>
-    </div>
+
+
+        </tbody>
+    </table>
 
 
 
@@ -46,16 +56,16 @@
         var nextDisabled = !Model.HasNextPage ? "disabled" : "";
     }
 
-    <a asp-action="GiveBook" asp-route-sortOrder="@ViewData["CurrentSort"]"
+    <a asp-action="DisplayUsers" asp-route-sortOrder="@ViewData["CurrentSort"]"
        asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
        class="btn btn-primary @prevDisabled">
         Previous
     </a>
 
-    <a asp-action="GiveBook" asp-route-sortOrder="@ViewData["CurrentSort"]"
+    <a asp-action="DisplayUsers" asp-route-sortOrder="@ViewData["CurrentSort"]"
        asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
        class="btn btn-primary @nextDisabled">
         Next
     </a>
-
+    <br /><br /><br />
 </div>
