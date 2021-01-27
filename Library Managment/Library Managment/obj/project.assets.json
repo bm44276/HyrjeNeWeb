@@ -9188,19 +9188,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jon\\.nuget\\packages\\": {}
+    "C:\\Users\\IT\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jon\\Desktop\\LMS_Library\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
+      "projectUniqueName": "C:\\Users\\IT\\Desktop\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
       "projectName": "Library Managment",
-      "projectPath": "C:\\Users\\Jon\\Desktop\\LMS_Library\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
-      "packagesPath": "C:\\Users\\Jon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jon\\Desktop\\LMS_Library\\HyrjeNeWeb\\Library Managment\\Library Managment\\obj\\",
+      "projectPath": "C:\\Users\\IT\\Desktop\\HyrjeNeWeb\\Library Managment\\Library Managment\\Library Managment.csproj",
+      "packagesPath": "C:\\Users\\IT\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\IT\\Desktop\\HyrjeNeWeb\\Library Managment\\Library Managment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Jon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\IT\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

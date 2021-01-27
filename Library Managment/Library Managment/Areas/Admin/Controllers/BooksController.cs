@@ -146,7 +146,21 @@ namespace Library_Managment.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            return View(book);
+
+            BookImagePath bookModel = new BookImagePath {
+                Id = book.Id,
+                ISBN = book.ISBN,
+                Name = book.Name,
+                Description = book.Description,
+                Genre = book.Genre,
+                Author = book.Author,
+                PublishDate = book.PublishDate,
+                Amount = book.Amount,
+                Available = book.Available
+
+            };
+
+            return View(bookModel);
         }
 
         // POST: Admin/Books/Edit/5
@@ -154,7 +168,7 @@ namespace Library_Managment.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ISBN,Name,Description,Genre,Author,PublishDate,Image,Amount,Available")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ISBN,Name,Description,Genre,Author,PublishDate,Image,Amount,Available")] BookImagePath book)
         {
             if (id != book.Id)
             {
@@ -165,7 +179,28 @@ namespace Library_Managment.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(book);
+                    string uniqueFileName = null;
+                    if (book.Image != null) {
+                        string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "BookImages");
+                        uniqueFileName = Guid.NewGuid().ToString() + "_" + book.Image.FileName;
+                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                        book.Image.CopyTo(new FileStream(filePath, FileMode.Create));
+                    }
+
+                    Book insertBook = new Book {
+                        Id = book.Id,
+                        ISBN = book.ISBN,
+                        Name = book.Name,
+                        Description = book.Description,
+                        Genre = book.Genre,
+                        Author = book.Author,
+                        PublishDate = book.PublishDate,
+                        Image = uniqueFileName,
+                        Amount = book.Amount,
+                        Available = book.Available
+                    };
+
+                    _context.Update(insertBook);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

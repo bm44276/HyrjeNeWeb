@@ -91,36 +91,38 @@ namespace Library_Managment.Areas.Admin.Controllers {
 
         public async Task<IActionResult> ChangeRoles(string Role, string userId) {
 
+            try {
+                if (Role == "Admin") {
+                    try {
 
-            if (Role == "Admin") {
-                try {
+                        var role = _userManager.FindByIdAsync(userId);
 
-                    var role = _userManager.FindByIdAsync(userId);
+                        var user = await _userManager.FindByIdAsync(userId);
 
-                    var user = await _userManager.FindByIdAsync(userId);
+                        await _userManager.RemoveFromRoleAsync(user, "User");
+                        await _userManager.AddToRoleAsync(user, "Administrator");
+                    } catch (Exception e) {
 
-                    await _userManager.RemoveFromRoleAsync(user, "User");
-                    await _userManager.AddToRoleAsync(user, "Administrator");
-                } catch (Exception e) {
+                        throw e;
+                    }
 
-                    throw e;
+                } else if (Role == "User") {
+                    try {
+
+                        var role = _userManager.FindByIdAsync(userId);
+
+                        var user = await _userManager.FindByIdAsync(userId);
+
+                        await _userManager.RemoveFromRoleAsync(user, "Administrator");
+                        await _userManager.AddToRoleAsync(user, "User");
+                    } catch (Exception e) {
+
+                        throw e;
+                    }
                 }
+            }catch(Exception e) {
 
-            } else if (Role == "User") {
-                try {
-
-                    var role = _userManager.FindByIdAsync(userId);
-
-                    var user = await _userManager.FindByIdAsync(userId);
-
-                    await _userManager.RemoveFromRoleAsync(user, "Administrator");
-                    await _userManager.AddToRoleAsync(user, "User");
-                } catch (Exception e) {
-
-                    throw e;
-                }
             }
-
             return RedirectToAction(nameof(DisplayUsers));
 
         }
